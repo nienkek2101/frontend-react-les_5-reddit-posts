@@ -2,9 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+// function toDotThousand(number) {
+//     if (number.length > 12) {
+//
+//     }
+//     if (number.length > 9) {
+//
+//     }
+//     if (number.length > 6) {
+//
+//     }
+//     if (number.length > 3) {
+//
+//     }
+// }
+
+
 function Home() {
     const [ dataPosts, setDataPosts ] = useState([]);
-    const [ subredditName, setSubredditName ] = useState('');
+    // const [ subredditName, setSubredditName ] = useState('');
 
     useEffect(() => {
         async function fetchPosts() {
@@ -29,18 +45,15 @@ function Home() {
                 {dataPosts.map((post) => {
                     return (
                         <li key={post.data.title}>
-                            <h5>{post.data.title}</h5>
+                            <h5><a href={`http://reddit.com/${post.data.permalink}`} target='_blank'>{post.data.title}</a></h5>
                             <p><Link
-                                to={'/subreddit-specification'}
-                                onClick={() => setSubredditName(post.data.subreddit.subreddit_name_prefixed)}>
-                                {post.data.subreddit}
-                            </Link>
-                                 | {post.data.num_comments} - {post.data.ups}
+                                to={`/subreddit-specification/${post.data.subreddit}`}
+                                // onClick={() => setSubredditName(post.data.subreddit.subreddit_name_prefixed)}
+                            >{post.data.subreddit}</Link> | {post.data.num_comments.toLocaleString()} comments - {post.data.ups.toLocaleString()} ups
                             </p>
                         </li>
                     );
                 })}
-                {console.log(subredditName)}
             </>
             }
         </>

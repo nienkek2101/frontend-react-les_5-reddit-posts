@@ -17,7 +17,7 @@ function App() {
                         <NavLink to="/" exact activeClassName='active-link'>Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/subreddit-specification" exact activeClassName='active-link'>Subreddit</NavLink>
+                        <NavLink to="/subreddit-specification/:subredditName" exact activeClassName='active-link'>Subreddit</NavLink>
                     </li>
                 </ul>
             </nav>
@@ -25,7 +25,7 @@ function App() {
                 <Route exact path="/">
                     <Home/>
                 </Route>
-                <Route path="/subreddit-specification">
+                <Route path="/subreddit-specification/:subredditName">
                     <SubredditSpecification/>
                 </Route>
             </Switch>
