@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+// import redditLogo from '../public/new-icon.ico'
 import Home from "./pages/homepage/Home";
 import SubredditSpecification from "./pages/subredditSpecification/SubredditSpecification";
 

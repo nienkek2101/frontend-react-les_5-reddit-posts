@@ -25,8 +25,9 @@ function SubredditSpecification() {
     return (
         <>
             <h1>{dataSubreddit.display_name_prefixed}</h1>
-            <p>Title: {dataSubreddit.public_description}</p>
-            <p>Description: </p>
+            {/*<img src={dataSubreddit.mobile_banner_image} />*/}
+            <p>Title: {dataSubreddit.title}</p>
+            <p>Description: {dataSubreddit.public_description}</p>
             <p>Number of subscribers: {dataSubreddit.subscribers}</p>
         </>
     );
