@@ -1,0 +1,31 @@
+.list-wrapper {
+    border-bottom: 1px solid;
+    list-style-type: none;
+
+}
+
+h1{
+    color: orange;
+}
+
+.post-title {
+    padding: 10px;
+    font-size: 17px;
+    background: #fdd8b5;
+    color: white;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: white;
+}
+
+.subreddit a {
+    color: orange;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: black;
+}

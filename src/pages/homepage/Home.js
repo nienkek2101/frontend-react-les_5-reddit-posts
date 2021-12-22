@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './Home.css';
 
 // function toDotThousand(number) {
 //     if (number.length > 12) {
@@ -51,11 +52,12 @@ function Home() {
             {error && <span>Er is iets misgegaan</span>}
             {dataPosts &&
             <>
+                <h1>Hottest Reddit posts</h1>
                 {dataPosts.map((post) => {
                     return (
-                        <li key={post.data.title}>
-                            <h5><a href={`http://reddit.com/${post.data.permalink}`} target='_blank'>{post.data.title}</a></h5>
-                            <p><Link
+                        <li key={post.data.title} className="list-wrapper">
+                            <h5 className="post-title"><a href={`http://reddit.com/${post.data.permalink}`} target='_blank'>{post.data.title}</a></h5>
+                            <p className="subreddit"><Link
                                 to={`/subreddit-specification/${post.data.subreddit}`}
                                 // onClick={() => setSubredditName(post.data.subreddit.subreddit_name_prefixed)}
                             >{post.data.subreddit}</Link> | {post.data.num_comments.toLocaleString()} comments - {post.data.ups.toLocaleString()} ups

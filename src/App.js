@@ -22,14 +22,16 @@ function App() {
                     </li>
                 </ul>
             </nav>
-            <Switch>
-                <Route exact path="/">
-                    <Home/>
-                </Route>
-                <Route path="/subreddit-specification/:subredditName">
-                    <SubredditSpecification/>
-                </Route>
-            </Switch>
+            <div className="post-wrapper">
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route path="/subreddit-specification/:subredditName">
+                        <SubredditSpecification/>
+                    </Route>
+                </Switch>
+            </div>
         </>
     );
 }
