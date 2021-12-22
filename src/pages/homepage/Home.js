@@ -20,10 +20,14 @@ import axios from 'axios';
 
 function Home() {
     const [ dataPosts, setDataPosts ] = useState([]);
+    const [ error, toggleError ] = useState(false);
+    const [ loading, toggleLoading ] = useState(false);
     // const [ subredditName, setSubredditName ] = useState('');
 
     useEffect(() => {
         async function fetchPosts() {
+            toggleError(false);
+            toggleLoading(true);
             try {
                 const result = await axios.get('https://www.reddit.com/hot.json?limit=15');
                 console.log(result.data.data);
@@ -33,13 +37,18 @@ function Home() {
 
             } catch(e) {
                 console.error(e);
+                toggleError(true);
             }
+            toggleLoading(false);
         };
+
         fetchPosts();
     }, []);
 
     return (
         <>
+            {loading && <span>Loading...</span>}
+            {error && <span>Er is iets misgegaan</span>}
             {dataPosts &&
             <>
                 {dataPosts.map((post) => {

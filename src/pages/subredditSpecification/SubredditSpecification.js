@@ -8,6 +8,8 @@ function SubredditSpecification() {
     const [ dataSubreddit, setDataSubreddit ] = useState([]);
     const { subredditName } = useParams();
     const history = useHistory();
+    const [ error, toggleError ] = useState(false);
+    const [ loading, toggleLoading ] = useState(false);
 
     function backToHome() {
         history.push('/');
@@ -16,6 +18,8 @@ function SubredditSpecification() {
     useEffect(() => {
 
         async function fetchData() {
+            toggleError(false);
+            toggleLoading(true);
 
             try {
                 // const result = await axios.get('https://www.reddit.com/r/tumblr/about.json');
@@ -25,13 +29,17 @@ function SubredditSpecification() {
 
             } catch(e) {
                 console.error(e);
+                toggleError(true);
             }
+            toggleLoading(false);
         };
         fetchData();
     }, []);
 
     return (
         <>
+            {loading && <span>Loading...</span>}
+            {error && <span>Er is iets misgegaan</span>}
             <h1>{dataSubreddit.display_name_prefixed}</h1>
             {/*<img src={dataSubreddit.mobile_banner_image} />*/}
             <p>Title: {dataSubreddit.title}</p>
