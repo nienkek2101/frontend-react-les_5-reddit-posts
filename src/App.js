@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import {
+    Switch,
+    Route,
+    NavLink
+} from "react-router-dom";
 import './App.css';
 
+// import redditLogo from '../public/new-icon.ico'
+import Home from "./pages/homepage/Home";
+import SubredditSpecification from "./pages/subredditSpecification/SubredditSpecification";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <nav>
+                <ul>
+                    <li>
+                        <NavLink to="/" exact activeClassName='active-link'>Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/subreddit-specification/:subredditName" exact activeClassName='active-link'>Subreddit</NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <div className="post-wrapper">
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route path="/subreddit-specification/:subredditName">
+                        <SubredditSpecification/>
+                    </Route>
+                </Switch>
+            </div>
+        </>
+    );
 }
 
 export default App;
